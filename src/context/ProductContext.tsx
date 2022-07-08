@@ -13,7 +13,7 @@ type ProductContextType = {
   removeTodo(id: string): void;
 };
 
-type TodoContexttTypeProps = {
+type ProductContextTypeProps = {
   children: ReactNode
 };
 
@@ -21,7 +21,7 @@ export const ProductContext = createContext<ProductContextType | null>(null);
 
 export const useProductContext = () => useContext(ProductContext) as ProductContextType;
 
-export const ProductContextProvider: FC<TodoContexttTypeProps> = ({ children }) => {
+export const ProductContextProvider: FC<ProductContextTypeProps> = ({ children }) => {
   const [state, setState] = useState<IProduct[]>([]);
 
   function addTodo({ name, price, barCode }: Product): void {
