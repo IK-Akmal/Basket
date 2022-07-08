@@ -1,5 +1,6 @@
 .addproduct {
-    
+    display: flex;
+    justify-content: center;
 }
 
 .form {
