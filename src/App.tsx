@@ -1,11 +1,12 @@
-import './App.css';
+import styles from './App.module.css';
 import AddProduct from './components/AddProduct/AddProduct';
 
 const App = () => (
-  <div className="App">
-    <header className="App-header">
+  <div className={styles.app}>
+    <main className={styles.main}>
       <AddProduct />
-    </header>
+      <div />
+    </main>
   </div>
 );
 

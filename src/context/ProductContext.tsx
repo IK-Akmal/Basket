@@ -31,7 +31,7 @@ export const ProductContextProvider: FC<ProductContextTypeProps> = ({ children }
       name,
       price,
     };
-    setState((pre) => [newProduct, ...pre]);
+    setState((pre) => [...pre, newProduct]);
   }
 
   function removeProduct(id: string): void {
