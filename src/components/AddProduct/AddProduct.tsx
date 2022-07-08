@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import cn from 'classnames';
 import styles from './AddProduct.module.css';
 import AddProductProps from './AddProduct.props';
 
 const AddProduct: FC<AddProductProps> = ({ className, ...props }) => (
-  <div className={styles.addproduct} {...props}>
+  <div className={cn(className, styles.addproduct)} {...props}>
     <form className={styles.form}>
       <label className={styles.label} htmlFor="id-product">
         Числовой идентификатор товара:
@@ -18,6 +19,7 @@ const AddProduct: FC<AddProductProps> = ({ className, ...props }) => (
         Цена товара:
         <input className={styles.input} id="price-product" name="price" type="number" />
       </label>
+      <button type="submit">Добавить</button>
     </form>
   </div>
 );
