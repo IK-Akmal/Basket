@@ -25,7 +25,7 @@ const AddProduct: FC<AddProductProps> = ({ className, ...props }) => {
 
         <label className={styles.label} htmlFor="name-product">
           Название товара:
-          <input {...register('name', { required: true })} className={styles.input} id="name-product" type="text" />
+          <input {...register('name', { required: true, validate: (value) => !!value.trim() })} className={styles.input} id="name-product" type="text" />
         </label>
 
         <label className={styles.label} htmlFor="price-product">
