@@ -9,8 +9,8 @@ type Product = Omit<IProduct, 'id'>;
 
 type ProductContextType = {
   state: IProduct[],
-  addTodo(product: Product): void;
-  removeTodo(id: string): void;
+  addProduct(product: Product): void;
+  removeProduct(id: string): void;
 };
 
 type ProductContextTypeProps = {
@@ -24,25 +24,25 @@ export const useProductContext = () => useContext(ProductContext) as ProductCont
 export const ProductContextProvider: FC<ProductContextTypeProps> = ({ children }) => {
   const [state, setState] = useState<IProduct[]>([]);
 
-  function addTodo({ name, price, barCode }: Product): void {
-    const newTodo: IProduct = {
+  function addProduct({ name, price, barCode }: Product): void {
+    const newProduct: IProduct = {
       id: nanoid(),
       barCode,
       name,
       price,
     };
-    setState((pre) => [newTodo, ...pre]);
+    setState((pre) => [newProduct, ...pre]);
   }
 
-  function removeTodo(id: string): void {
+  function removeProduct(id: string): void {
     setState(state.filter((todo) => todo.id !== id));
   }
 
   const TodoContextProviderValueMemo = useMemo(
     () => ({
       state,
-      addTodo,
-      removeTodo,
+      addProduct,
+      removeProduct,
     }),
     [state],
   );
