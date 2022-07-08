@@ -1,0 +1,25 @@
+.wrapperEmpty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;    
+}
+
+.table td,
+.table th {
+    padding: 8px;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

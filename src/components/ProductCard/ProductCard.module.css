@@ -1,0 +1,25 @@
+.row {
+    border-radius: 10px;
+    box-shadow: 0 1px 15px rgb(0 0 0 / 5%), 0 1px 6px rgb(0 0 0 / 5%);
+}
+
+.row td {
+    background-color: #fff;
+    padding: 10px;
+    vertical-align: middle;
+}
+.row td:last-child {
+   text-align: center;
+}
+
+.row button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.row button svg{
+    width: 25px;
+    height: 25px;
+    fill: red;
+}
