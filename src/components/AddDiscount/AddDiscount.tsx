@@ -19,7 +19,7 @@ const AddDiscount = () => {
 
   return (
     <section className={styles.addDiscount}>
-      <h2>Добавить скидку</h2>
+      <h2>Установить скидку</h2>
       <form onSubmit={onSubmit} className={styles.form}>
         <label className={styles.label} htmlFor="discount">
           Скидка
@@ -45,7 +45,7 @@ const AddDiscount = () => {
           }
         </label>
         <div role="group" className={styles.btnWrapper}>
-          <button type="submit">Добавить</button>
+          <button type="submit">Установить скидку</button>
           <button onClick={removeDiscount} type="button">Убрать скидки</button>
         </div>
       </form>
