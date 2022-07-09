@@ -8,9 +8,12 @@ import { IProduct } from '../model/IProduct';
 type Product = Omit<IProduct, 'id'>;
 
 type ProductContextType = {
-  state: IProduct[],
+  products: IProduct[],
+  discount: number;
   addProduct(product: Product): void;
   removeProduct(id: string): void;
+  addDiscount(discount: number): void;
+  removeDiscount(): void;
 };
 
 type ProductContextTypeProps = {
@@ -22,29 +25,43 @@ export const ProductContext = createContext<ProductContextType | null>(null);
 export const useProductContext = () => useContext(ProductContext) as ProductContextType;
 
 export const ProductContextProvider: FC<ProductContextTypeProps> = ({ children }) => {
-  const [state, setState] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [discount, setDiscount] = useState<number>(0);
 
   function addProduct({ name, price, barCode }: Product): void {
     const newProduct: IProduct = {
       id: nanoid(),
-      barCode,
+      barCode: Number(barCode),
       name,
-      price,
+      price: Number(price),
     };
-    setState((pre) => [...pre, newProduct]);
+    setProducts((pre) => [...pre, newProduct]);
   }
 
   function removeProduct(id: string): void {
-    setState(state.filter((todo) => todo.id !== id));
+    setProducts(products.filter((todo) => todo.id !== id));
+  }
+
+  function addDiscount(_discount: number): void {
+    if (_discount >= 0 && _discount <= 100) {
+      setDiscount(_discount);
+    }
+  }
+
+  function removeDiscount(): void {
+    addDiscount(0);
   }
 
   const TodoContextProviderValueMemo = useMemo(
     () => ({
-      state,
+      products,
+      discount,
       addProduct,
       removeProduct,
+      addDiscount,
+      removeDiscount,
     }),
-    [state],
+    [products, discount],
   );
 
   return (

@@ -5,19 +5,21 @@ import styles from './ProductList.module.css';
 
 type ProductListProps = {
   products: IProduct[];
+  discount: number;
 };
 
-const ProductList: FC<ProductListProps> = ({ products }) => (
-  products.length === 0
-    ? (
-      <div className={styles.wrapperEmpty}>
-        <span>Список продуктов пуст</span>
-      </div>
-    )
+const ProductList: FC<ProductListProps> = ({ products, discount }) => {
+  const totalPrice = products.reduce((acc, b) => acc + Number(b.price), 0);
+  const discountedAmount = totalPrice - (totalPrice * discount) / 100;
+  return (
+    products.length === 0
+      ? (
+        <div className={styles.wrapperEmpty}>
+          <span>Список продуктов пуст</span>
+        </div>
+      )
 
-    : (
-      <div className={styles.wrapper}>
-
+      : (
         <table className={styles.table}>
           <thead>
             <tr>
@@ -34,19 +36,44 @@ const ProductList: FC<ProductListProps> = ({ products }) => (
               ))
             }
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={2}>
+                количество:
+                {products.length}
+              </td>
+              <td colSpan={2}>
+                {
+                  discount > 0
+                    ? (
+                      <span className={styles.discount}>
+                        <span>Общая Сумма:</span>
+                        <s>
+                          {totalPrice}
+                        </s>
+                        <span>Итоговая сумма со скидкой:</span>
+                        <span>{discountedAmount}</span>
+                        <span>
+                          Скидка:
+                          {' '}
+                          {discount}
+                          %
+                        </span>
+                      </span>
+                    )
+                    : (
+                      <span>
+                        Итоговая Сумма:
+                        {totalPrice}
+                      </span>
+                    )
+                }
+              </td>
+            </tr>
+          </tfoot>
         </table>
-        <div className={styles.statusBar}>
-          <span>
-            количество:
-            {products.length}
-          </span>
-          <span>
-            Итоговая цена:
-            {products.reduce((acc, b) => acc + Number(b.price), 0)}
-          </span>
-        </div>
-      </div>
-    )
-);
+      )
+  );
+};
 
 export default ProductList;

@@ -1,15 +1,19 @@
 import styles from './App.module.css';
+import AddDiscount from './components/AddDiscount/AddDiscount';
 import AddProduct from './components/AddProduct/AddProduct';
 import ProductList from './components/ProductList/ProductList';
 import { useProductContext } from './context/ProductContext';
 
 const App = () => {
-  const { state } = useProductContext();
+  const { products, discount } = useProductContext();
   return (
     <div className={styles.app}>
-      <main className={styles.main}>
+      <header className={styles.header}>
         <AddProduct />
-        <ProductList products={state} />
+        <AddDiscount />
+      </header>
+      <main className={styles.main}>
+        <ProductList products={products} discount={discount} />
       </main>
     </div>
   );

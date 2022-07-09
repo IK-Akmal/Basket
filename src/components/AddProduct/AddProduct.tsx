@@ -19,11 +19,12 @@ const AddProduct: FC<AddProductProps> = ({ className, ...props }) => {
   });
 
   return (
-    <div className={cn(className, styles.addproduct)} {...props}>
+    <section className={cn(className, styles.addproduct)} {...props}>
+      <h2>Добавить продукт</h2>
       <form onSubmit={onSubmit} className={styles.form}>
         <label className={styles.label} htmlFor="id-product">
           Числовой идентификатор товара
-          <Input {...register('barCode', { required: true })} id="id-product" type="number" />
+          <Input {...register('barCode', { required: true, min: 1 })} id="id-product" type="number" />
           {
             errors.barCode && (
               <span className={styles.error}>
@@ -51,7 +52,7 @@ const AddProduct: FC<AddProductProps> = ({ className, ...props }) => {
 
         <label className={styles.label} htmlFor="price-product">
           Цена товара
-          <Input {...register('price', { required: true })} id="price-product" type="number" />
+          <Input {...register('price', { required: true, min: 1 })} id="price-product" type="number" />
           {
             errors.price && (
               <span className={styles.error}>
@@ -63,7 +64,7 @@ const AddProduct: FC<AddProductProps> = ({ className, ...props }) => {
 
         <button type="submit">Добавить</button>
       </form>
-    </div>
+    </section>
   );
 };
 

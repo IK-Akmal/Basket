@@ -25,18 +25,21 @@
         "react-hooks"
     ],
     "rules": {
-		"semi": "off",
-        "linebreak-style": ["warn","windows"],
+        "semi": "off",
+        "linebreak-style": [
+            "warn",
+            "windows"
+        ],
         "indent": "off",
-		"@typescript-eslint/semi": [
-			"warn"
-		],
-		"@typescript-eslint/no-empty-interface": [
-			"error",
-			{
-				"allowSingleExtends": true
-			}
-		],
+        "@typescript-eslint/semi": [
+            "warn"
+        ],
+        "@typescript-eslint/no-empty-interface": [
+            "error",
+            {
+                "allowSingleExtends": true
+            }
+        ],
         "react/react-in-jsx-scope": "off",
         "react/function-component-definition": [
             2,
@@ -44,6 +47,17 @@
                 "namedComponents": "arrow-function"
             }
         ],
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": [
+                        "nesting",
+                        "id"
+                    ]
+                }
+            }
+        ]
     }
 }
