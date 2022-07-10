@@ -44,3 +44,10 @@
     padding: 10px 50px;
     cursor: pointer;
 }
+
+
+@media (max-width: 576px) {
+    .btnWrapper {
+        flex-direction: column;
+    }
+}
