@@ -38,27 +38,28 @@ const ProductList: FC<ProductListProps> = ({ products, discount }) => {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan={2}>
+              <td colSpan={1}>
                 количество:
                 {products.length}
               </td>
-              <td colSpan={2}>
+              <td colSpan={3}>
                 {
                   discount > 0
                     ? (
                       <span className={styles.discount}>
-                        <span>Общая Сумма:</span>
+                        Общая Сумма:
                         <s>
                           {totalPrice}
                         </s>
-                        <span>Итоговая сумма со скидкой:</span>
-                        <span>{discountedAmount}</span>
-                        <span>
-                          Скидка:
-                          {' '}
-                          {discount}
-                          %
-                        </span>
+                        {' '}
+                        Итоговая сумма со скидкой:
+                        {' '}
+                        {discountedAmount}
+                        {' '}
+                        Скидка:
+                        {' '}
+                        {discount}
+                        %
                       </span>
                     )
                     : (

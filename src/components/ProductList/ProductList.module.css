@@ -19,6 +19,8 @@
 .table td,
 .table th {
     padding: 8px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .table tfoot td {
@@ -27,7 +29,9 @@
     vertical-align: middle;
 }
 
-.discount{
-    display: flex;
-    gap: 5px;
+.discount {
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-word;
 }
+
